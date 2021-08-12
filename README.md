@@ -7,8 +7,7 @@
 2. [Развертывание проекта]
 <!-- (./1.2-deploy) -->
 
-4. [Docker]
-<!-- (./1.3-docker) -->
+4. [Docker](./1.3-docker)
 
 6. [Docker Compose]
 <!-- (./1.4-docker-compose) -->
