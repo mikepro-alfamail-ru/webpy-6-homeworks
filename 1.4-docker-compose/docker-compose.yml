@@ -1,22 +1,6 @@
 version: '3.7'
 
 services:
-  nginx:
-    depends_on:
-      - api
-    build: ./nginx
-
-  api:
-    depends_on:
-      - db-postgres
-    build: ./app
-    command: gunicorn --bind 0.0.0.0:8000 stocks_products.wsgi
-    volumes:
-      - ./app/:/usr/src/app/
-    ports:
-      - 8000:8000
-    env_file: .env
-
   db-postgres:
     image: postgres:11.0-alpine
     environment:
@@ -24,9 +8,45 @@ services:
       POSTGRES_PASSWORD: user_pass
       POSTGRES_DB: db_api
     ports:
-      - 5433:5432
+      - 5432:5432
     volumes:
       - pg-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    hostname: db-postgres
+
+  api:
+    build: ./app
+    command: sh ./run.sh
+    depends_on:
+      - db-postgres
+    volumes:
+      - ./app/:/usr/src/app/
+      - ./static:/usr/src/app/static/
+    ports:
+      - 8000:8000
+    env_file: 
+      - .env
+    networks:
+      - backend
+    hostname: api
+
+  nginx:
+    build: ./nginx
+    depends_on:
+      - api
+    volumes:
+      - ./static/:/usr/share/nginx/static/
+      - ./nginxlog/:/var/log/nginx/
+    ports:
+      - 8080:80
+    networks:
+      - backend
+    hostname: nginx
+
+networks:
+  backend:
+    name: backend
 
 volumes:
   pg-data:
