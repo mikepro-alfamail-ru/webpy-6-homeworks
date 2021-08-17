@@ -9,8 +9,7 @@
 
 4. [Docker](./1.3-docker)
 
-6. [Docker Compose]
-<!-- (./1.4-docker-compose) -->
+6. [Docker Compose](./1.4-docker-compose)
 
 8. [CI/CD]
 <!-- (./1.5-ci-cd) -->
