@@ -11,8 +11,7 @@
 
 6. [Docker Compose](./1.4-docker-compose)
 
-8. [CI/CD]
-<!-- (./1.5-ci-cd) -->
+8. [CI/CD](./1.5-ci-cd)
 
 Блок 2. Другие подходы к web-разработке
 
