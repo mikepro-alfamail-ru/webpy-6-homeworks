@@ -1,4 +1,7 @@
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+
+
+db = SQLAlchemy()
 
 
 class Users(db.Model):
@@ -6,7 +9,7 @@ class Users(db.Model):
     email = db.Column(db.String(32), index=True, unique=True)
     name = db.Column(db.String(64))
     password = db.Column(db.String(64), nullable=False)
-    ads = db.relationship('Ads', backref='owner')
+    ads = db.relationship('Ads', backref='owner', lazy='dynamic')
 
 
 class Ads(db.Model):
@@ -14,3 +17,4 @@ class Ads(db.Model):
     title = db.Column(db.String(32), index=True, unique=True)
     description = db.Column(db.String(255))
     adv_date = db.Column(db.DateTime)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
