@@ -4,7 +4,16 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class Users(db.Model):
+class SaveMixin():
+    def add(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def commit(self):
+        db.session.commit()
+
+
+class Users(db.Model, SaveMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(32), index=True, unique=True)
     name = db.Column(db.String(64))
@@ -12,7 +21,7 @@ class Users(db.Model):
     ads = db.relationship('Ads', backref='owner', lazy='dynamic')
 
 
-class Ads(db.Model):
+class Ads(db.Model, SaveMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(32), index=True, unique=True)
     description = db.Column(db.String(255))

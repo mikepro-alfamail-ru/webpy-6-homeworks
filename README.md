@@ -15,8 +15,7 @@
 
 Блок 2. Другие подходы к web-разработке
 
-1. [Flask]
-<!-- (./2.1-flask) -->
+1. [Flask](./2.1-flask)
 
 3. [Event loop. Asyncio]
 <!-- (./2.2-asyncio) -->

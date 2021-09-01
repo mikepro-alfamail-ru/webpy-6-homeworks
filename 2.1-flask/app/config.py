@@ -8,4 +8,4 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-SALT = 'MY_super_salt_982347jwhfiwu3rociI^%FK@%'
+SALT = b'MY_super_salt_982347jwhfiwu3rociI^%FK@%'
