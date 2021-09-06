@@ -17,8 +17,7 @@
 
 1. [Flask](./2.1-flask)
 
-3. [Event loop. Asyncio]
-<!-- (./2.2-asyncio) -->
+3. [Event loop. Asyncio](./2.2-asyncio)
 
 5. [Aiohttp]
 <!-- (./2.3-aiohttp) -->
