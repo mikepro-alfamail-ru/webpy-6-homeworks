@@ -1,0 +1,9 @@
+__pycache__/
+venv/
+static/
+*/.gitignore
+*/static/
+*/venv/
+*/.env
+*/__pycache__/
+*/.idea/

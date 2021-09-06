@@ -56,10 +56,11 @@ async def sendmail_async(mailto, name, **params):
 async def main():
     contacts = await db_contacts()
     for contacts_chunk in chunked(contacts, MAX_MAILS):
-        sendmail_couroutines = [
+        sendmail_coroutines = [
             sendmail_async(mailto=mailto, name=f'{first_name} {last_name}')
-            for _, first_name, last_name, mailto, *other in contacts_chunk]
-        await asyncio.gather(*sendmail_couroutines)
+            for _, first_name, last_name, mailto, *other in contacts_chunk
+        ]
+        await asyncio.gather(*sendmail_coroutines)
         time.sleep(MIN_TIME)
 
 
