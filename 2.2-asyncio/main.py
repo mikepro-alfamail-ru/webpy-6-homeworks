@@ -1,6 +1,4 @@
 import asyncio
-import time
-
 import aiosqlite3
 import aiosmtplib
 
@@ -8,16 +6,11 @@ from more_itertools import chunked
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-MAX_MAILS = 5
-MIN_TIME = 10
-# Ограничения mailtrap.io, 5 писем в 10 секунд
-
+MAX_MAILS = 25
 
 MAIL_PARAMS = {
-    'host': 'smtp.mailtrap.io',
-    'username': 'aba1a44638c6a8',
-    'password': '0ebcc9aa6a92cf',
-    'port': 25,
+    'host': '127.0.0.1',
+    'port': 1025,
     'mailfrom': 'test@example.com'
 }
 
@@ -46,8 +39,6 @@ async def sendmail_async(mailto, name, **params):
     port = mail_params.get('port')
     smtp = aiosmtplib.SMTP(hostname=host, port=port)
     await smtp.connect()
-    if 'username' in mail_params:
-        await smtp.login(mail_params['username'], mail_params['password'])
     result = await smtp.send_message(msg)
     await smtp.quit()
     return result
@@ -61,7 +52,6 @@ async def main():
             for _, first_name, last_name, mailto, *other in contacts_chunk
         ]
         await asyncio.gather(*sendmail_coroutines)
-        time.sleep(MIN_TIME)
 
 
 if __name__ == '__main__':
