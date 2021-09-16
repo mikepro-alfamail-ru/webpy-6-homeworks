@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, MetaData
+from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, MetaData, select
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy import orm
@@ -37,3 +37,13 @@ async def db_context(app):
     yield
 
 
+async def auth_context(token: str):
+    session = Session()
+    user = await session.execute(select(Users).where(Users.password == token))
+    user = user.fetchone()
+    await session.close()
+    if not user:
+        user = None
+    else:
+        user = user[0]
+    return user
