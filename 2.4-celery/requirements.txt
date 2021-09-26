@@ -1,0 +1,9 @@
+Flask~=2.0.1
+Flask-SQLAlchemy
+SQLAlchemy
+flask-migrate
+flask-bcrypt
+flask-httpauth
+celery~=5.1.2
+redis
+kombu~=5.1.0
