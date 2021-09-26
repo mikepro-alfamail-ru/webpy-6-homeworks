@@ -1,58 +1,15 @@
 # примеры API-запросов
 
-@baseUrl = http://127.0.0.1:8080
-@token = 5b8fa773-94b7-5619-89b6-c7259c5fe88b
-@token1 = 5b8fa773-94b7-5619-89b6-c7259c5fe88d
+@baseUrl = http://127.0.0.1:5000/api/v1
 
-# создание пользователя
-POST {{baseUrl}}/user
-Content-Type: application/json
-
-{
-  "email": "111wwww@afffa.ede",
-  "name": "bwlkejhflwekj"
-}
-
-###
-
-# получение пользователя
-GET {{baseUrl}}/user/3
-Authorization: Token {{token}}
+# отправка
+POST  {{baseUrl}}/sendmail
 Content-Type: application/json
 
 ###
 
-# получение объявлений
-GET {{baseUrl}}/ads
+# статус
+GET  {{baseUrl}}/sendmail/43e7e1d5-2cb9-4fe7-b77a-bd78b9c890aa
 Content-Type: application/json
 
-###
-
-# создание объявления
-POST {{baseUrl}}/ad
-Authorization: Token {{token}}
-Content-Type: application/json
-
-{
-  "title": "test4",
-  "description": "Sample advertisement"
-}
-###
-
-# удаление объявления
-DELETE  {{baseUrl}}/ad/4
-Authorization: Token {{token}}
-Content-Type: application/json
-
-###
-
-# обновление объявления
-PATCH  {{baseUrl}}/ad/3
-Authorization: Token {{token}}
-Content-Type: application/json
-
-{
-  "title": "test333",
-  "description": "Sample advertisement"
-}
 ###
