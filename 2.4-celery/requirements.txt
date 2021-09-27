@@ -1,9 +1,10 @@
-Flask~=2.0.1
+Flask
 Flask-SQLAlchemy
 SQLAlchemy
 flask-migrate
 flask-bcrypt
 flask-httpauth
-celery~=5.1.2
+celery
 redis
 kombu~=5.1.0
+aiosmtplib

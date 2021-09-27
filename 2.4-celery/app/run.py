@@ -32,4 +32,4 @@ app.add_url_rule(API_ROOT + 'sendmail/<string:task_id>', view_func=views.Sendmai
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

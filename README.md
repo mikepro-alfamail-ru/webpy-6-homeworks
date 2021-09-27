@@ -21,5 +21,4 @@
 
 5. [Aiohttp](./2.3-aiohttp)
 
-7. [Celery]
-<!-- (./2.4-celery) -->
+7. [Celery](./2.4-celery)
